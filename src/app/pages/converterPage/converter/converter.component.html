@@ -1,0 +1,62 @@
+<div class="container min-vh-100 pt-5">
+  <h2 class="text-primary fs-1">Currency Converter</h2>
+
+  @if(convertedAmount !== null){
+
+  <div class="border p-3 rounded-3 my-3">
+    <div class="text-black">
+      <h3 class="text-dark-emphasis">
+        {{ editForm.get("amount")?.value }}
+        {{ editForm.get("fromValue").value.name }} = <br />
+      </h3>
+      <h1 class="text-black fw-bolder">
+        {{ convertedAmount | number : "1.2-2" }}
+        {{ this.editForm.get("toValue").value.name }}
+      </h1>
+    </div>
+  </div>
+  } @else{
+  <div class="my-5"></div>
+  }
+  <div class="d-flex w-100 justify-content-center align-items-center">
+    <form class="form w-100" [formGroup]="editForm" (submit)="convert()">
+      <div class="d-flex flex-column gap-2">
+        <label for="fromValue">Base Currency:</label>
+
+        <p-dropdown
+          class="w-100"
+          [options]="exchangeRates"
+          formControlName="fromValue"
+          variant="filled"
+          optionLabel="name"
+          placeholder="Base Currency"
+        />
+      </div>
+
+      <div class="d-flex flex-column gap-2 mt-3">
+        <label for="toValue">Target Currency:</label>
+        <p-dropdown
+          class="w-100"
+          [options]="exchangeRates"
+          formControlName="toValue"
+          variant="filled"
+          optionLabel="name"
+          placeholder="Target Currency"
+        />
+      </div>
+
+      <div class="d-flex flex-column gap-2 mt-3">
+        <label for="amount">Amount:</label>
+        <input type="number" pInputText id="amount" formControlName="amount" />
+      </div>
+      <div class="d-flex justify-content-end">
+        <button
+          class="btn btn-lg btn-primary rounded-5 px-5 mt-3"
+          type="submit"
+        >
+          Convert
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
