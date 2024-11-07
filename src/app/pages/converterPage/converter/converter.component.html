@@ -7,11 +7,11 @@
     <div class="text-black">
       <h3 class="text-dark-emphasis">
         {{ editForm.get("amount")?.value }}
-        {{ editForm.get("fromValue").value.name }} = <br />
+        {{ editForm.get("fromValue")!.value.name }} = <br />
       </h3>
       <h1 class="text-black fw-bolder">
         {{ convertedAmount | number : "1.2-2" }}
-        {{ this.editForm.get("toValue").value.name }}
+        {{ this.editForm.get("toValue")!.value.name }}
       </h1>
     </div>
   </div>
