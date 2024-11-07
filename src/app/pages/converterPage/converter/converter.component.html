@@ -2,7 +2,6 @@
   <h2 class="text-primary fs-1">Currency Converter</h2>
 
   @if(convertedAmount !== null){
-
   <div class="border p-3 rounded-3 my-3">
     <div class="text-black">
       <h3 class="text-dark-emphasis">
@@ -28,6 +27,7 @@
           [options]="exchangeRates"
           formControlName="fromValue"
           variant="filled"
+          required
           optionLabel="name"
           placeholder="Base Currency"
         />
@@ -40,6 +40,7 @@
           [options]="exchangeRates"
           formControlName="toValue"
           variant="filled"
+          required
           optionLabel="name"
           placeholder="Target Currency"
         />
@@ -52,6 +53,7 @@
           pInputText
           id="amount"
           formControlName="amount"
+          min="1"
           (blur)="scrollToTop()"
         />
       </div>
@@ -59,6 +61,7 @@
         <button
           class="btn btn-lg btn-primary rounded-5 px-5 mt-3"
           type="submit"
+          [disabled]="!editForm.valid"
         >
           Convert
         </button>

@@ -1,5 +1,10 @@
 import { Injectable } from '@angular/core';
-import { FormControl, FormGroup, RequiredValidator } from '@angular/forms';
+import {
+  FormControl,
+  FormGroup,
+  RequiredValidator,
+  Validators,
+} from '@angular/forms';
 
 export type ConverterForm = {
   fromValue: string;
@@ -16,15 +21,10 @@ export class ConverterUpdateFormService {
     return new FormGroup({
       fromValue: new FormControl(),
       toValue: new FormControl(),
-      amount: new FormControl(),
-    });
-  }
-
-  getDefaultForm() {
-    return new FormGroup({
-      fromValue: new FormControl(''),
-      toValue: new FormControl(''),
-      amount: new FormControl(1),
+      amount: new FormControl(1, [
+        Validators.required,
+        Validators.pattern('^[1-9][0-9]*$'),
+      ]),
     });
   }
 }
