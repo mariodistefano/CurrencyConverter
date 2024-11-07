@@ -89,6 +89,13 @@ export default class ConverterComponent implements OnInit {
       });
   }
 
+  scrollToTop(): void {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  }
+
   convert(): void {
     const fromCurrency = this.editForm.get('fromValue')!.value.name;
     const toCurrency = this.editForm.get('toValue')!.value.name;
