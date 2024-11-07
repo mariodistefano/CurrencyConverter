@@ -115,7 +115,7 @@ export default class ConverterComponent implements OnInit {
       this.convertedAmount = null;
       return;
     }
-
+    this.scrollToTop();
     // Calcolo del valore convertito
     this.convertedAmount = (amount / fromRate) * toRate;
     console.log(`Converted Amount: ${this.convertedAmount}`);

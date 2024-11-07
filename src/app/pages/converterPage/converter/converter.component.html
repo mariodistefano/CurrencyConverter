@@ -42,13 +42,18 @@
           variant="filled"
           optionLabel="name"
           placeholder="Target Currency"
-          (blur)="scrollToTop()"
         />
       </div>
 
       <div class="d-flex flex-column gap-2 mt-3">
         <label for="amount">Amount:</label>
-        <input type="number" pInputText id="amount" formControlName="amount" />
+        <input
+          type="number"
+          pInputText
+          id="amount"
+          formControlName="amount"
+          (blur)="scrollToTop()"
+        />
       </div>
       <div class="d-flex justify-content-end">
         <button
